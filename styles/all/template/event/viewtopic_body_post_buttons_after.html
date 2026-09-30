@@ -1,0 +1,7 @@
+{% if postrow.S_POSTCOMMENTS_CAN_POST %}
+<li>
+	<a href="javascript:void(0);" class="button button-icon-only postcomment-quick-btn" data-post-id="{{ postrow.POST_ID }}" title="{{ lang('POST_COMMENT') }}">
+		<i class="icon fa-commenting-o fa-fw" aria-hidden="true"></i><span class="sr-only">{{ lang('POST_COMMENT') }}</span>
+	</a>
+</li>
+{% endif %}

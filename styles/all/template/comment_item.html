@@ -1,0 +1,44 @@
+<div class="postcomment-item" id="postcomment-{postrow.comment.ID}" data-comment-id="{postrow.comment.ID}">
+	<div class="postcomment-avatar">
+		{postrow.comment.AVATAR}
+	</div>
+	<div class="postcomment-main">
+		<div class="postcomment-header">
+			<span class="postcomment-author">{postrow.comment.USERNAME_FULL}</span>
+			<span class="postcomment-bullet">&bull;</span>
+			<span class="postcomment-time" title="{postrow.comment.FORMATTED_TIME}">{postrow.comment.RELATIVE_TIME}</span>
+			<!-- IF postrow.comment.S_EDITED -->
+			<span class="postcomment-edited-tag" title="{L_POST_COMMENT_EDITED}">({L_POST_COMMENT_EDITED})</span>
+			<!-- ENDIF -->
+
+			<!-- IF postrow.comment.S_CAN_EDIT or postrow.comment.S_CAN_DELETE -->
+			<div class="postcomment-actions">
+				<!-- IF postrow.comment.S_CAN_EDIT -->
+				<button type="button" class="postcomment-action-btn postcomment-btn-edit" title="{L_POST_COMMENT_EDIT}">
+					<i class="icon fa-pencil fa-fw" aria-hidden="true"></i>
+				</button>
+				<!-- ENDIF -->
+				<!-- IF postrow.comment.S_CAN_DELETE -->
+				<button type="button" class="postcomment-action-btn postcomment-btn-delete" title="{L_POST_COMMENT_DELETE}">
+					<i class="icon fa-trash-o fa-fw" aria-hidden="true"></i>
+				</button>
+				<!-- ENDIF -->
+			</div>
+			<!-- ENDIF -->
+		</div>
+
+		<div class="postcomment-body">
+			<div class="postcomment-text">{postrow.comment.TEXT}</div>
+			<div class="postcomment-raw-text" style="display:none;">{postrow.comment.TEXT_RAW}</div>
+		</div>
+
+		<!-- Inline Edit Form (Hidden by default) -->
+		<div class="postcomment-edit-box" style="display:none;">
+			<textarea class="postcomment-edit-textarea" rows="2"></textarea>
+			<div class="postcomment-edit-actions">
+				<button type="button" class="button button2 postcomment-btn-cancel-edit">{L_POST_COMMENT_CANCEL}</button>
+				<button type="button" class="button button1 postcomment-btn-save-edit">{L_POST_COMMENT_SAVE}</button>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,40 @@
+{
+    "name": "phpbbseo/postcomments",
+    "type": "phpbb-extension",
+    "description": "Interactive nested comments for individual posts in topics inspired by modern forum design",
+    "homepage": "https://www.phpbbseo.com",
+    "version": "1.0.0",
+    "time": "2026-09-29",
+    "license": "GPL-2.0-only",
+    "authors": [
+        {
+            "name": "Meis@M",
+            "email": "info@phpbb-seo.ir",
+            "homepage": "https://www.phpbbseo.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=7.4.0",
+        "composer/installers": "~1.0"
+    },
+    "keywords": [
+        "phpbb",
+        "extension",
+        "comments",
+        "post-comments",
+        "vbulletin",
+        "ajax",
+        "rtl"
+    ],
+    "support": {
+        "issues": "https://github.com/phpbb-seo/phpbb-post-comments/issues",
+        "source": "https://github.com/phpbb-seo/phpbb-post-comments"
+    },
+    "extra": {
+        "display-name": "phpBB Post Comments",
+        "soft-require": {
+            "phpbb/phpbb": ">=3.3.0,<4.0.0@dev"
+        }
+    }
+}

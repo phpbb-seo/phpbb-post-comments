@@ -1,0 +1,83 @@
+<!-- INCLUDE overall_header.html -->
+
+<a id="maincontent"></a>
+
+<h1>{L_ACP_POSTCOMMENTS_TITLE}</h1>
+<p>{L_ACP_POSTCOMMENTS_SETTINGS_EXPLAIN}</p>
+
+<form id="acp_postcomments" method="post" action="{U_ACTION}">
+
+<fieldset>
+	<legend>{L_GENERAL_OPTIONS}</legend>
+	<dl>
+		<dt><label for="postcomments_enable">{L_ACP_POSTCOMMENTS_ENABLE}{L_COLON}</label><br /><span>{L_ACP_POSTCOMMENTS_ENABLE_EXPLAIN}</span></dt>
+		<dd>
+			<label><input type="radio" class="radio" id="postcomments_enable" name="postcomments_enable" value="1"<!-- IF POSTCOMMENTS_ENABLE --> checked="checked"<!-- ENDIF --> /> {L_YES}</label>
+			<label><input type="radio" class="radio" name="postcomments_enable" value="0"<!-- IF not POSTCOMMENTS_ENABLE --> checked="checked"<!-- ENDIF --> /> {L_NO}</label>
+		</dd>
+	</dl>
+	<dl>
+		<dt><label for="postcomments_forums">{L_ACP_POSTCOMMENTS_FORUMS}{L_COLON}</label><br /><span>{L_ACP_POSTCOMMENTS_FORUMS_EXPLAIN}</span></dt>
+		<dd>
+			<select id="postcomments_forums" name="postcomments_forums[]" multiple="multiple" size="8" style="min-width: 250px;">
+				{S_FORUM_OPTIONS}
+			</select>
+		</dd>
+	</dl>
+</fieldset>
+
+<fieldset>
+	<legend>{L_ACP_POSTCOMMENTS_SETTINGS}</legend>
+	<dl>
+		<dt><label for="postcomments_limit">{L_ACP_POSTCOMMENTS_LIMIT}{L_COLON}</label><br /><span>{L_ACP_POSTCOMMENTS_LIMIT_EXPLAIN}</span></dt>
+		<dd><input type="number" id="postcomments_limit" name="postcomments_limit" value="{POSTCOMMENTS_LIMIT}" min="1" max="50" /></dd>
+	</dl>
+	<dl>
+		<dt><label for="postcomments_order">{L_ACP_POSTCOMMENTS_ORDER}{L_COLON}</label><br /><span>{L_ACP_POSTCOMMENTS_ORDER_EXPLAIN}</span></dt>
+		<dd>
+			<select id="postcomments_order" name="postcomments_order">
+				<option value="ASC"<!-- IF POSTCOMMENTS_ORDER_ASC --> selected="selected"<!-- ENDIF -->>{L_ACP_POSTCOMMENTS_ORDER_ASC}</option>
+				<option value="DESC"<!-- IF not POSTCOMMENTS_ORDER_ASC --> selected="selected"<!-- ENDIF -->>{L_ACP_POSTCOMMENTS_ORDER_DESC}</option>
+			</select>
+		</dd>
+	</dl>
+	<dl>
+		<dt><label for="postcomments_max_length">{L_ACP_POSTCOMMENTS_MAX_LENGTH}{L_COLON}</label><br /><span>{L_ACP_POSTCOMMENTS_MAX_LENGTH_EXPLAIN}</span></dt>
+		<dd><input type="number" id="postcomments_max_length" name="postcomments_max_length" value="{POSTCOMMENTS_MAX_LENGTH}" min="0" step="50" /></dd>
+	</dl>
+</fieldset>
+
+<fieldset>
+	<legend>{L_ACP_POSTCOMMENTS_SETTINGS} - {L_FORMATTING}</legend>
+	<dl>
+		<dt><label for="postcomments_allow_bbcode">{L_ACP_POSTCOMMENTS_ALLOW_BBCODE}{L_COLON}</label><br /><span>{L_ACP_POSTCOMMENTS_ALLOW_BBCODE_EXPLAIN}</span></dt>
+		<dd>
+			<label><input type="radio" class="radio" id="postcomments_allow_bbcode" name="postcomments_allow_bbcode" value="1"<!-- IF POSTCOMMENTS_ALLOW_BBCODE --> checked="checked"<!-- ENDIF --> /> {L_YES}</label>
+			<label><input type="radio" class="radio" name="postcomments_allow_bbcode" value="0"<!-- IF not POSTCOMMENTS_ALLOW_BBCODE --> checked="checked"<!-- ENDIF --> /> {L_NO}</label>
+		</dd>
+	</dl>
+	<dl>
+		<dt><label for="postcomments_allow_smilies">{L_ACP_POSTCOMMENTS_ALLOW_SMILIES}{L_COLON}</label><br /><span>{L_ACP_POSTCOMMENTS_ALLOW_SMILIES_EXPLAIN}</span></dt>
+		<dd>
+			<label><input type="radio" class="radio" id="postcomments_allow_smilies" name="postcomments_allow_smilies" value="1"<!-- IF POSTCOMMENTS_ALLOW_SMILIES --> checked="checked"<!-- ENDIF --> /> {L_YES}</label>
+			<label><input type="radio" class="radio" name="postcomments_allow_smilies" value="0"<!-- IF not POSTCOMMENTS_ALLOW_SMILIES --> checked="checked"<!-- ENDIF --> /> {L_NO}</label>
+		</dd>
+	</dl>
+	<dl>
+		<dt><label for="postcomments_notify_author">{L_ACP_POSTCOMMENTS_NOTIFY_AUTHOR}{L_COLON}</label><br /><span>{L_ACP_POSTCOMMENTS_NOTIFY_AUTHOR_EXPLAIN}</span></dt>
+		<dd>
+			<label><input type="radio" class="radio" id="postcomments_notify_author" name="postcomments_notify_author" value="1"<!-- IF POSTCOMMENTS_NOTIFY_AUTHOR --> checked="checked"<!-- ENDIF --> /> {L_YES}</label>
+			<label><input type="radio" class="radio" name="postcomments_notify_author" value="0"<!-- IF not POSTCOMMENTS_NOTIFY_AUTHOR --> checked="checked"<!-- ENDIF --> /> {L_NO}</label>
+		</dd>
+	</dl>
+</fieldset>
+
+<fieldset class="submit-buttons">
+	<input class="button1" type="submit" id="submit" name="submit" value="{L_SUBMIT}" />&nbsp;
+	<input class="button2" type="reset" id="reset" name="reset" value="{L_RESET}" />
+	{S_FORM_TOKEN}
+</fieldset>
+
+</form>
+
+<!-- INCLUDE overall_footer.html -->

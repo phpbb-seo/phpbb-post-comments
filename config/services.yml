@@ -1,0 +1,50 @@
+services:
+    phpbbseo.postcomments.manager:
+        class: phpbbseo\postcomments\service\comment_manager
+        arguments:
+            - '@dbal.conn'
+            - '@config'
+            - '@user'
+            - '@auth'
+            - '@language'
+            - '@notification_manager'
+            - '@user_loader'
+            - '%core.table_prefix%'
+            - '%core.root_path%'
+            - '%core.php_ext%'
+
+    phpbbseo.postcomments.controller:
+        class: phpbbseo\postcomments\controller\comment_controller
+        arguments:
+            - '@controller.helper'
+            - '@request'
+            - '@user'
+            - '@language'
+            - '@phpbbseo.postcomments.manager'
+
+    phpbbseo.postcomments.listener:
+        class: phpbbseo\postcomments\event\main_listener
+        arguments:
+            - '@config'
+            - '@user'
+            - '@auth'
+            - '@template'
+            - '@controller.helper'
+            - '@phpbbseo.postcomments.manager'
+        tags:
+            - { name: event.listener }
+
+    phpbbseo.postcomments.permission_listener:
+        class: phpbbseo\postcomments\event\permission_listener
+        tags:
+            - { name: event.listener }
+
+    notification.type.phpbbseo_post_comment:
+        class: phpbbseo\postcomments\notification\type\post_comment
+        shared: false
+        parent: notification.type.base
+        calls:
+            - [set_user_loader, ['@user_loader']]
+            - [set_config, ['@config']]
+        tags:
+            - { name: notification.type }

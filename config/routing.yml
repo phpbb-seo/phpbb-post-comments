@@ -1,0 +1,19 @@
+phpbbseo_postcomments_add:
+    path: /postcomments/add
+    defaults: { _controller: phpbbseo.postcomments.controller:add }
+    methods: [POST]
+
+phpbbseo_postcomments_edit:
+    path: /postcomments/edit
+    defaults: { _controller: phpbbseo.postcomments.controller:edit }
+    methods: [POST]
+
+phpbbseo_postcomments_delete:
+    path: /postcomments/delete
+    defaults: { _controller: phpbbseo.postcomments.controller:delete }
+    methods: [POST]
+
+phpbbseo_postcomments_load:
+    path: /postcomments/load
+    defaults: { _controller: phpbbseo.postcomments.controller:load }
+    methods: [GET]

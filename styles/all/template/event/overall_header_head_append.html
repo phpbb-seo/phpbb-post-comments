@@ -1,0 +1,33 @@
+<!-- IF S_POSTCOMMENTS_ENABLED -->
+	<!-- INCLUDECSS @phpbbseo_postcomments/postcomments.css -->
+	<!-- INCLUDEJS @phpbbseo_postcomments/postcomments.js -->
+	<script>
+		var postcomments_cfg = {
+			url_add: '{U_POSTCOMMENTS_ADD}',
+			url_edit: '{U_POSTCOMMENTS_EDIT}',
+			url_delete: '{U_POSTCOMMENTS_DELETE}',
+			url_load: '{U_POSTCOMMENTS_LOAD}',
+			max_length: parseInt('{POSTCOMMENTS_MAX_LENGTH}') || 0,
+			initial_limit: parseInt('{POSTCOMMENTS_INITIAL_LIMIT}') || 3,
+			lang: {
+				delete_confirm: '{LA_POST_COMMENT_DELETE_CONFIRM}',
+				chars_left: '{LA_POST_COMMENT_CHARS_LEFT}',
+				loading: '{LA_POST_COMMENT_LOADING}',
+				edit: '{LA_POST_COMMENT_EDIT}',
+				delete: '{LA_POST_COMMENT_DELETE}',
+				cancel: '{LA_POST_COMMENT_CANCEL}',
+				save: '{LA_POST_COMMENT_SAVE}',
+				edited: '{LA_POST_COMMENT_EDITED}',
+				just_now: '{LA_POST_COMMENT_JUST_NOW}',
+				deleted_success: '{LA_POST_COMMENT_DELETED_SUCCESS}',
+				load_more: '{LA_POST_COMMENT_LOAD_MORE}',
+				error_submit: '{LA_POST_COMMENT_ERROR_SUBMIT}',
+				error_edit: '{LA_POST_COMMENT_ERROR_EDIT}',
+				error_delete: '{LA_POST_COMMENT_ERROR_DELETE}',
+				error_network: '{LA_POST_COMMENT_ERROR_NETWORK}',
+				mins_ago: '{LA_POST_COMMENT_TIME_MINS_AGO}',
+				hours_ago: '{LA_POST_COMMENT_TIME_HOURS_AGO}'
+			}
+		};
+	</script>
+<!-- ENDIF -->

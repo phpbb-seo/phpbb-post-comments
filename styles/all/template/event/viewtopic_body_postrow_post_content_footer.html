@@ -1,0 +1,116 @@
+{% if postrow.S_POSTCOMMENTS_CAN_VIEW %}
+<div class="postcomments-container" id="postcomments-{{ postrow.POST_ID }}" data-post-id="{{ postrow.POST_ID }}" data-total-count="{{ postrow.POSTCOMMENTS_COUNT }}" data-loaded-count="{{ postrow.POSTCOMMENTS_LOADED_COUNT }}">
+	<!-- Header / Toggle Bar -->
+	<div class="postcomments-bar{% if postrow.POSTCOMMENTS_COUNT == 0 and not postrow.S_POSTCOMMENTS_CAN_POST %} postcomments-empty{% endif %}">
+		<div class="postcomments-bar-left">
+			<span class="postcomments-bar-title">
+				<i class="icon fa-comments-o fa-fw" aria-hidden="true"></i>
+				<span class="postcomments-title-text">{{ lang('POST_COMMENTS') }}</span>
+				<span class="postcomments-counter-badge {% if postrow.POSTCOMMENTS_COUNT == 0 %}badge-empty{% endif %}">{{ postrow.POSTCOMMENTS_COUNT }}</span>
+			</span>
+		</div>
+
+		{% if postrow.S_POSTCOMMENTS_CAN_POST %}
+		<div class="postcomments-bar-right">
+			<button type="button" class="postcomments-btn-add postcomment-btn-toggle-form" data-post-id="{{ postrow.POST_ID }}">
+				<i class="icon fa-plus-circle fa-fw" aria-hidden="true"></i>
+				<span>{{ lang('POST_COMMENT_ADD') }}</span>
+			</button>
+		</div>
+		{% endif %}
+	</div>
+
+	<!-- Comments List Container -->
+	<div class="postcomments-content{% if postrow.POSTCOMMENTS_COUNT == 0 %} postcomments-content-empty{% endif %}">
+		<!-- Load More Button -->
+		{% if postrow.POSTCOMMENTS_HAS_MORE %}
+		<div class="postcomments-load-more-wrap">
+			<button type="button" class="postcomments-load-more-btn" data-post-id="{{ postrow.POST_ID }}" data-offset="{{ postrow.POSTCOMMENTS_LOADED_COUNT }}" data-remaining="{{ postrow.POSTCOMMENTS_REMAINING }}">
+				<i class="icon fa-history fa-fw" aria-hidden="true"></i>
+				<span>{{ lang('POST_COMMENT_LOAD_MORE', postrow.POSTCOMMENTS_REMAINING) }}</span>
+			</button>
+		</div>
+		{% endif %}
+
+		<div class="postcomments-list">
+			{% for comment in postrow.comment %}
+				<div class="postcomment-item" id="postcomment-{{ comment.ID }}" data-comment-id="{{ comment.ID }}">
+					<div class="postcomment-avatar">
+						{{ comment.AVATAR|raw }}
+					</div>
+					<div class="postcomment-main">
+						<div class="postcomment-header">
+							<span class="postcomment-author">{{ comment.USERNAME_FULL|raw }}</span>
+							<span class="postcomment-bullet">&bull;</span>
+							<span class="postcomment-time" title="{{ comment.FORMATTED_TIME }}">{{ comment.RELATIVE_TIME }}</span>
+							{% if comment.S_EDITED %}
+							<span class="postcomment-edited-tag" title="{{ lang('POST_COMMENT_EDITED') }}">({{ lang('POST_COMMENT_EDITED') }})</span>
+							{% endif %}
+
+							{% if comment.S_CAN_EDIT or comment.S_CAN_DELETE %}
+							<div class="postcomment-actions">
+								{% if comment.S_CAN_EDIT %}
+								<button type="button" class="postcomment-action-btn postcomment-btn-edit" title="{{ lang('POST_COMMENT_EDIT') }}">
+									<i class="icon fa-pencil fa-fw" aria-hidden="true"></i>
+								</button>
+								{% endif %}
+								{% if comment.S_CAN_DELETE %}
+								<button type="button" class="postcomment-action-btn postcomment-btn-delete" title="{{ lang('POST_COMMENT_DELETE') }}">
+									<i class="icon fa-trash-o fa-fw" aria-hidden="true"></i>
+								</button>
+								{% endif %}
+							</div>
+							{% endif %}
+						</div>
+
+						<div class="postcomment-body">
+							<div class="postcomment-text">{{ comment.TEXT|raw }}</div>
+							<div class="postcomment-raw-text" style="display:none;">{{ comment.TEXT_RAW }}</div>
+						</div>
+
+						<!-- Inline Edit Form (Hidden by default) -->
+						<div class="postcomment-edit-box" style="display:none;">
+							<textarea class="postcomment-edit-textarea" rows="2"></textarea>
+							<div class="postcomment-edit-actions">
+								<button type="button" class="postcomment-btn-cancel-edit">{{ lang('POST_COMMENT_CANCEL') }}</button>
+								<button type="button" class="postcomment-btn-save-edit">{{ lang('POST_COMMENT_SAVE') }}</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+
+	<!-- Inline Comment Form -->
+	{% if postrow.S_POSTCOMMENTS_CAN_POST %}
+	<div class="postcomments-form-wrap" style="display:none;">
+		<div class="postcomments-form-inner">
+			<div class="postcomments-form-avatar">
+				{% if CURRENT_USER_AVATAR %}
+					{{ CURRENT_USER_AVATAR|raw }}
+				{% else %}
+					<div class="postcomment-default-avatar"><i class="icon fa fa-user fa-fw" aria-hidden="true"></i></div>
+				{% endif %}
+			</div>
+			<div class="postcomments-form-input-area">
+				<textarea class="postcomments-textarea" placeholder="{{ lang('POST_COMMENT_PLACEHOLDER') }}" rows="1" maxlength="{% if POSTCOMMENTS_MAX_LENGTH > 0 %}{{ POSTCOMMENTS_MAX_LENGTH }}{% endif %}"></textarea>
+				
+				<div class="postcomments-form-footer">
+					<div class="postcomments-char-counter" {% if not POSTCOMMENTS_MAX_LENGTH %}style="display:none;"{% endif %}>
+						<span class="postcomments-char-count">{{ POSTCOMMENTS_MAX_LENGTH }}</span> {{ lang('POST_COMMENT_CHARS_LEFT') }}
+					</div>
+					<div class="postcomments-form-actions">
+						<button type="button" class="postcomments-btn-cancel postcomments-btn-cancel-post">{{ lang('POST_COMMENT_CANCEL') }}</button>
+						<button type="button" class="postcomments-btn-submit postcomments-btn-submit-post" disabled="disabled">
+							<i class="icon fa-paper-plane fa-fw" aria-hidden="true"></i>
+							<span>{{ lang('POST_COMMENT_SUBMIT') }}</span>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% endif %}
+</div>
+{% endif %}
