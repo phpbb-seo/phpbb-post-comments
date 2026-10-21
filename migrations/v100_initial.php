@@ -84,4 +84,32 @@ class v100_initial extends migration
 			]],
 		];
 	}
+
+	public function revert_data()
+	{
+		return [
+			['custom', [[$this, 'purge_notifications']]],
+		];
+	}
+
+	public function purge_notifications()
+	{
+		$notification_types_table = $this->table_prefix . 'notification_types';
+		$notifications_table = $this->table_prefix . 'notifications';
+		$user_notifications_table = $this->table_prefix . 'user_notifications';
+
+		$sql = 'SELECT notification_type_id FROM ' . $notification_types_table . "
+			WHERE notification_type_name = 'notification.type.phpbbseo_post_comment'";
+		$result = $this->db->sql_query($sql);
+		$type_id = (int) $this->db->sql_fetchfield('notification_type_id');
+		$this->db->sql_freeresult($result);
+
+		if ($type_id)
+		{
+			$this->db->sql_query('DELETE FROM ' . $notifications_table . ' WHERE notification_type_id = ' . $type_id);
+			$this->db->sql_query('DELETE FROM ' . $notification_types_table . ' WHERE notification_type_id = ' . $type_id);
+		}
+
+		$this->db->sql_query('DELETE FROM ' . $user_notifications_table . " WHERE item_type = 'notification.type.phpbbseo_post_comment'");
+	}
 }
