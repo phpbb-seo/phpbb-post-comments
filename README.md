@@ -3,7 +3,7 @@
 [![phpBB Version](https://img.shields.io/badge/phpBB-3.3.x-blue.svg)](https://www.phpbb.com/)
 [![PHP Version](https://img.shields.io/badge/PHP-%3E%3D%207.4-8892BF.svg)](https://php.net/)
 [![License](https://img.shields.io/badge/license-GPL--2.0-green.svg)](LICENSE)
-[![Latest Release](https://img.shields.io/badge/release-v1.0.0-orange.svg)](https://github.com/phpbb-seo/phpbb-post-comments/releases)
+[![Latest Release](https://img.shields.io/badge/release-v1.0.1-orange.svg)](https://github.com/phpbb-seo/phpbb-post-comments/releases)
 
 A modern, nested AJAX comment engine for **phpBB 3.3.x** posts inspired by vBulletin 6 sub-panel design. It allows forum members to discuss and respond directly to individual posts within a topic without cluttering the main thread.
 
